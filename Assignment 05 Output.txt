@@ -1,0 +1,26 @@
+﻿Assignment 05 Output:
+
+
+Enter number of nodes in multistage graph: 7
+Enter number of edges: 10
+Enter edges as: from to cost
+0 1 5
+0 2 3
+1 3 2
+1 4 6
+2 3 4
+2 4 1
+3 5 7
+3 6 3
+4 5 2
+4 6 5
+Enter source node: 0
+Enter destination node: 6
+
+
+--- Optimal Delivery Route ---
+Path: 0 -> 2 -> 4 -> 6
+Execution time: 0.13858 ms
+
+
+=== Code Execution Successful ===
