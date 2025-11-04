@@ -1,9 +1,3 @@
-/*
-Design and implement a sorting algorithm using Merge Sort to efficiently arrange customer orders based on their timestamps. 
-The solution should handle a large dataset (up to 1 million orders) with minimal computational overhead. 
-Additionally, analyze the time complexity and compare it with traditional sorting techniques.
-*/
-
 import java.util.*;
 
 class CustomerOrder {
@@ -17,21 +11,17 @@ class CustomerOrder {
 }
 
 public class Assignment1 {
-
-    // Merge Sort 
     public static void mergeSort(CustomerOrder[] orders, int left, int right) {
         if (orders == null || orders.length == 0) return;
         if (left < right) {
-            // Safe midpoint calculation to prevent overflow
             int mid = left + (right - left) / 2;
 
-            mergeSort(orders, left, mid);       // Sort left half
-            mergeSort(orders, mid + 1, right);    // Sort right half
-            merge(orders, left, mid, right);    // Merge the sorted halves
+            mergeSort(orders, left, mid);       
+            mergeSort(orders, mid + 1, right);    
+            merge(orders, left, mid, right);    
         }
     }
-
-    // Merge two sorted parts of the array
+    
     private static void merge(CustomerOrder[] arr, int left, int mid, int right) {
         int n1 = mid - left + 1;
         int n2 = right - mid;
@@ -55,7 +45,7 @@ public class Assignment1 {
         while (i < n1) arr[k++] = leftArr[i++];
         while (j < n2) arr[k++] = rightArr[j++];
     }
-    // Sample data 
+
     public static CustomerOrder[] sampleData() {
         return new CustomerOrder[]{
             new CustomerOrder("O01", 1700000100000L),
@@ -92,4 +82,5 @@ public class Assignment1 {
         System.out.println("\nTime Taken: " + timeTaken + " ms");
 
     }
+
 }
