@@ -1,29 +1,10 @@
-//ASSIGNMENT 3:
-//        Scenario: Emergency Relief Supply Distribution
-//        A devastating flood has hit multiple villages in a remote area, and the government, along
-//        with NGOs, is organizing an emergency relief operation. A rescue team has a limited-
-//        capacity boat that can carry a maximum weight of W kilograms. The boat must transport
-//        critical supplies, including food, medicine, and drinking water, from a relief center to the
-//        affected villages.
-//        Each type of relief item has:
-//        ● A weight (wi) in kilograms.
-//        ● Utility value (vi) indicating its importance (e.g., medicine has higher value than food).
-//        ● Some items can be divided into smaller portions (e.g., food and water), while others must
-//        be taken as a whole (e.g., medical kits).
-//        As the logistics manager, you must:
-//        1. Implement the Fractional Knapsack algorithm to maximize the total utility value of the
-//        supplies transported.
-//        2. Prioritize high-value items while considering weight constraints.
-//        3. Allow partial selection of divisible items (e.g., carrying a fraction of food packets).
-//        4. Ensure that the boat carries the most critical supplies given its weight limit W.
-//        Code :
 import java.util.*;
 
 class ReliefItem {
     String itemName;
     double weightKg;
-    double importance;    // Utility value
-    boolean canDivide;    // Whether partial loading is allowed
+    double importance;    
+    boolean canDivide;   
 
     public ReliefItem(String itemName, double weightKg, double importance, boolean canDivide) {
         this.itemName = itemName;
@@ -31,8 +12,6 @@ class ReliefItem {
         this.importance = importance;
         this.canDivide = canDivide;
     }
-
-    // Calculate importance per kg
     public double importancePerKg() {
         return importance / weightKg;
     }
@@ -45,10 +24,9 @@ public class Assignment3 {
 
         System.out.println("=== Emergency Relief Supply Distribution ===");
 
-        // Input number of items
         System.out.print("Enter number of relief items: ");
         int itemCount = input.nextInt();
-        input.nextLine(); // Consume newline
+        input.nextLine(); 
 
         if (itemCount <= 0) {
             System.out.println("No items to load. Exiting.");
@@ -58,7 +36,6 @@ public class Assignment3 {
 
         List<ReliefItem> supplies = new ArrayList<>();
 
-        // Input item details
         for (int i = 0; i < itemCount; i++) {
             System.out.println("\nItem #" + (i + 1));
 
@@ -83,12 +60,10 @@ public class Assignment3 {
 
             System.out.print("Divisible? (1 = yes, 0 = no): ");
             boolean divisible = input.nextInt() == 1;
-            input.nextLine(); // consume newline
+            input.nextLine(); 
 
             supplies.add(new ReliefItem(name, weight, value, divisible));
         }
-
-        // Input boat capacity
         System.out.print("\nEnter boat capacity (kg): ");
         double boatCapacity = input.nextDouble();
         if (boatCapacity <= 0) {
@@ -99,7 +74,6 @@ public class Assignment3 {
 
         long startTime = System.nanoTime();
 
-        // Sort items by importance per kg descending
         supplies.sort((a, b) -> Double.compare(b.importancePerKg(), a.importancePerKg()));
 
         double totalImportance = 0;
@@ -108,7 +82,7 @@ public class Assignment3 {
         System.out.println("\n=== Supplies Loaded on Boat ===");
 
         for (ReliefItem item : supplies) {
-            if (remainingCapacity <= 0) break; // boat full
+            if (remainingCapacity <= 0) break; 
 
             if (item.canDivide) {
                 double loadWeight = Math.min(item.weightKg, remainingCapacity);
@@ -135,3 +109,4 @@ public class Assignment3 {
         input.close();
     }
 }
+
