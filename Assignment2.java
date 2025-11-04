@@ -1,13 +1,3 @@
-/*
-Movie Recommendation System Optimization
-A popular OTT platform, StreamFlix, offers personalized recommendations by sorting movies
-based on user preferences, such as IMDB rating, release year, or watch time popularity.
-However, during peak hours, sorting large datasets slows down the system.
-As a backend engineer, you must:
-● Implement Quicksort to efficiently sort movies based on various user-selected
-parameters.
-● Handle large datasets containing of movies while maintaining fast response times
-*/
 import java.util.Scanner;
 
 class Movie {
@@ -26,8 +16,6 @@ class Movie {
 
 
 public class Assignment2 {
-
-    // QuickSort 
     public static void quickSort(Movie[] movies, int low, int high, String sortBy) {
         if (low < high) {
             int pivotIndex = partition(movies, low, high, sortBy);
@@ -35,16 +23,12 @@ public class Assignment2 {
             quickSort(movies, pivotIndex + 1, high, sortBy);
         }
     }
-
-    // Partition 
     private static int partition(Movie[] movies, int low, int high, String sortBy) {
         Movie pivot = movies[high];
         int i = low - 1;
 
         for (int j = low; j < high; j++) {
             boolean swap = false;
-
-            // Compare 
             if (sortBy.equals("rating") && movies[j].imdbRating <= pivot.imdbRating) swap = true;
             else if (sortBy.equals("year") && movies[j].releaseYear <= pivot.releaseYear) swap = true;
             else if (sortBy.equals("watch") && movies[j].watchCount <= pivot.watchCount) swap = true;
@@ -56,8 +40,6 @@ public class Assignment2 {
                 movies[j] = temp;
             }
         }
-
-        // Place pivot at correct position
         Movie temp = movies[i + 1];
         movies[i + 1] = movies[high];
         movies[high] = temp;
