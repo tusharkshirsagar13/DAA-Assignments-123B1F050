@@ -1,3 +1,6 @@
+//Name: Tushar Kshirsagar
+//PRN: 123B1F050
+
 import java.util.Scanner;
 
 class Movie {
@@ -90,3 +93,4 @@ public class Assignment2 {
         sc.close();
     }
 }
+
