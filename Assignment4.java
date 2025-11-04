@@ -1,28 +1,7 @@
-//ASSIGNMENT 4:
-//        Scenario: Smart Traffic Management for Emergency Vehicles
-//        A smart city is implementing an intelligent traffic management system to assist ambulances
-//        in reaching hospitals as quickly as possible. The city’s road network is represented as a
-//        graph, where:
-//        ● Intersections (junctions) are nodes.
-//        ● Roads between intersections are edges with weights representing travel time (in minutes)
-//        considering traffic congestion.
-//        An ambulance is currently at Source (S) and needs to reach the nearest hospital (Destination
-//        D) in the shortest possible time. Due to dynamic traffic conditions, the weight of each road
-//        segment may change in real time.
-//        As a transportation engineer, you are assigned to:
-//        1. Implement Dijkstra’s algorithm to find the shortest path from the ambulance's current
-//        location (S) to all possible hospitals.
-//        2. Account for dynamic weight updates as traffic conditions change.
-//        3. Optimize the system to work efficiently for a large city with thousands of intersections
-//        and roads.
-//        4. Provide a visual representation of the optimal path for navigation.
-//        Expected Outcome:
-//        The system should suggest the quickest route for the ambulance, updating dynamically
-//        based on real-time traffic conditions, ensuring minimal response time to emergencies.
-//
-//        Code :
-import java.util.*;
+//Name: Tushar Kshirsagar
+//PRN: 123B1F050
 
+import java.util.*;
 class Edge {
     int targetNode;
     int travelMinutes;
@@ -34,8 +13,6 @@ class Edge {
 }
 
 public class Assignment4 {
-
-    // Dijkstra's algorithm to calculate shortest travel times from source
     public static int[] shortestTravelTimes(List<List<Edge>> cityMap, int source, int[] previous) {
         int n = cityMap.size();
         int[] timeTo = new int[n];
@@ -43,7 +20,6 @@ public class Assignment4 {
         Arrays.fill(previous, -1);
         timeTo[source] = 0;
 
-        // Priority queue: [node, current travel time]
         PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[1]));
         pq.add(new int[]{source, 0});
 
@@ -67,7 +43,6 @@ public class Assignment4 {
         return timeTo;
     }
 
-    // Print the shortest path from source to destination
     public static void displayPath(int[] previous, int destination) {
         if (previous[destination] == -1) {
             System.out.print(destination);
@@ -77,7 +52,6 @@ public class Assignment4 {
         System.out.print(" -> " + destination);
     }
 
-    // Find the nearest hospital based on travel times
     public static int getNearestHospital(int[] travelTimes, int[] hospitalNodes) {
         int nearest = -1;
         int minTime = Integer.MAX_VALUE;
@@ -99,7 +73,6 @@ public class Assignment4 {
         System.out.print("Enter number of roads: ");
         int roads = input.nextInt();
 
-        // Initialize city graph
         List<List<Edge>> cityGraph = new ArrayList<>();
         for (int i = 0; i < intersections; i++) cityGraph.add(new ArrayList<>());
 
@@ -107,7 +80,7 @@ public class Assignment4 {
         for (int i = 0; i < roads; i++) {
             int u = input.nextInt(), v = input.nextInt(), t = input.nextInt();
             cityGraph.get(u).add(new Edge(v, t));
-            cityGraph.get(v).add(new Edge(u, t)); // undirected road
+            cityGraph.get(v).add(new Edge(u, t));
         }
 
         System.out.print("Ambulance starting intersection: ");
