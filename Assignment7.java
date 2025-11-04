@@ -1,9 +1,9 @@
-﻿
+//Name: Tushar Kshirsagar
+//PRN: 123B1F050
+
 import java.util.*;
 
 public class Assigment7_DAA {
-
-    
     static void addEdge(List<List<Integer>> graph, int u, int v) {
         graph.get(u).add(v);
         graph.get(v).add(u);
@@ -27,7 +27,6 @@ public class Assigment7_DAA {
                     available[result[adj]] = false;
             }
 
-          
             int color;
             for (color = 0; color < numCourses; color++) {
                 if (available[color]) break;
@@ -53,10 +52,7 @@ public class Assigment7_DAA {
 
         for (int i = 0; i < numCourses; i++)
             graph.add(new ArrayList<>());
-
-      
-
-       
+ 
         addEdge(graph, 0, 1);
         addEdge(graph, 1, 2);
         addEdge(graph, 2, 3);
@@ -68,4 +64,3 @@ public class Assigment7_DAA {
         greedyColoring(graph, numCourses);
     }
 }
-
